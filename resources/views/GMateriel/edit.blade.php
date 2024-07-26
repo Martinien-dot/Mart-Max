@@ -32,7 +32,12 @@
     </style>
 </head>
 <body>
-    <h1 class="text-center text-2xl font-bold mb-6">Création d'un Nouveau Matériel</h1>
+        <nav class="bg-white shadow-md rounded-lg p-4 mb-6 flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Modifcation De Matériel</h1>
+            <a href="{{ route('materiel.welcome') }}" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out">
+                Accueil
+            </a>
+        </nav>
     <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
         @if($errors->any())
             <div class="mb-4">
@@ -45,17 +50,17 @@
         @endif
 
         <fieldset class="border border-blue-600 p-4">
-            <legend class="text-2xl font-bold text-blue-600 mb-4 px-2">Ajouter un Nouveau Matériel</legend>
-            <form method="POST" action = "{{route('materiel.update', ['materiel' => $materiel])}}">
+            <legend class="text-2xl font-bold text-blue-600 mb-4 px-2">Modification de Matériel</legend>
+            <form method="POST" action="{{ route('materiel.update', ['materiel' => $materiel->id]) }}">
                 @csrf
-                @method('put')
+                @method('PUT')
                 <table class="w-full text-left">
                     <tr>
                         <td class="py-2 px-3">
                             <label for="numero_ordre" class="block text-sm font-medium text-gray-700">Numéro d'Ordre</label>
                         </td>
                         <td class="py-2 px-3">
-                            <input type="text" id="numero_ordre" name="numero_ordre" value="{{ old('numero_ordre') }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
+                            <input type="text" id="numero_ordre" name="numero_ordre" value="{{ old('numero_ordre', $materiel->numero_ordre) }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
                         </td>
                     </tr>
                     <tr>
@@ -64,8 +69,8 @@
                         </td>
                         <td class="py-2 px-3">
                             <select id="departement" name="departement" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
-                                <option value="GEI" {{ old('departement') == 'GEI' ? 'selected' : '' }}>GEI</option>
-                                <option value="GI" {{ old('departement') == 'GI' ? 'selected' : '' }}>GI</option>
+                                <option value="GEI" {{ old('departement', $materiel->departement) == 'GEI' ? 'selected' : '' }}>GEI</option>
+                                <option value="GI" {{ old('departement', $materiel->departement) == 'GI' ? 'selected' : '' }}>GI</option>
                             </select>
                         </td>
                     </tr>
@@ -74,7 +79,7 @@
                             <label for="designation" class="block text-sm font-medium text-gray-700">Désignation</label>
                         </td>
                         <td class="py-2 px-3">
-                            <input type="text" id="designation" name="designation" value="{{ old('designation') }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
+                            <input type="text" id="designation" name="designation" value="{{ old('designation', $materiel->designation) }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
                         </td>
                     </tr>
                     <tr>
@@ -82,7 +87,7 @@
                             <label for="categorie" class="block text-sm font-medium text-gray-700">Catégorie</label>
                         </td>
                         <td class="py-2 px-3">
-                            <input type="text" id="categorie" name="categorie" value="{{ old('categorie') }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
+                            <input type="text" id="categorie" name="categorie" value="{{ old('categorie', $materiel->categorie) }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
                         </td>
                     </tr>
                     <tr>
@@ -90,7 +95,7 @@
                             <label for="fournisseur" class="block text-sm font-medium text-gray-700">Fournisseur</label>
                         </td>
                         <td class="py-2 px-3">
-                            <input type="text" id="fournisseur" name="fournisseur" value="{{ old('fournisseur') }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
+                            <input type="text" id="fournisseur" name="fournisseur" value="{{ old('fournisseur', $materiel->fournisseur) }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
                         </td>
                     </tr>
                     <tr>
@@ -98,7 +103,7 @@
                             <label for="prix_ht" class="block text-sm font-medium text-gray-700">Prix HT (€)</label>
                         </td>
                         <td class="py-2 px-3">
-                            <input type="text" id="prix_ht" name="prix_ht" value="{{ old('prix_ht') }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
+                            <input type="text" id="prix_ht" name="prix_ht" value="{{ old('prix_ht', $materiel->prix_ht) }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
                         </td>
                     </tr>
                     <tr>
@@ -106,7 +111,7 @@
                             <label for="date_acquisition" class="block text-sm font-medium text-gray-700">Date d'Acquisition</label>
                         </td>
                         <td class="py-2 px-3">
-                            <input type="date" id="date_acquisition" name="date_acquisition" value="{{ old('date_acquisition') }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
+                            <input type="date" id="date_acquisition" name="date_acquisition" value="{{ old('date_acquisition', $materiel->date_acquisition) }}" class="mt-1 block w-full rounded-md input-bg input-border focus:outline-none focus:ring-1 focus:ring-indigo-500 input-focus" required>
                         </td>
                     </tr>
                 </table>

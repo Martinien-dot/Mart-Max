@@ -32,7 +32,12 @@
     </style>
 </head>
 <body>
-    <h1 class="text-center text-2xl font-bold mb-6">Création d'un Nouveau Matériel</h1>
+    <nav class="bg-white shadow-md rounded-lg p-4 mb-6 flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Création d'un Nouveau Matériel</h1>
+            <a href="{{ route('materiel.welcome') }}" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out">
+                Accueil
+            </a>
+        </nav>
     <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
         @if($errors->any())
             <div class="mb-4">

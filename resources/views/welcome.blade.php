@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'Accueil - Nom de l'École</title>
+    <title>Page d'Accueil - ENSAFès</title>
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100 text-gray-900 h-screen flex flex-col overflow-hidden">
@@ -18,7 +18,7 @@
                         <img class="h-15 w-10 pl-0 ml-0" src="logoensaf.png" alt="Logo de l'École">
                     </div>
                     <div class="ml-2 text-xl font-semibold">
-                        Nom de l'École
+                        Ecole National Des Sciences Appliquées Fès
                     </div>
                 </div>
                 <!-- Search and History -->
@@ -36,28 +36,32 @@
             </div>
         </div>
     </nav>
-
+    @if(session()->has('success'))
+        <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-lg">
+            {{ session('success') }}
+        </div>
+    @endif
     <!-- Main Content -->
     <div class="flex flex-grow overflow-hidden">
         <!-- Sidebar: Gestion de matériel -->
-        <div class="bg-white p-6 rounded-lg shadow-lg w-1/4 overflow-y-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-1/6 overflow-y-auto">
         <h1 class="text-2xl font-serif italic text-orange-800 shadow-lg transform rotate-[-1deg]">Gestion de matériel</h1>
-
+        <button type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" id='loadMateriels'>Voir tous les matériels</button>
             <div class="pb-4">
-            <h3 class="text-lg font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Gérer matériel</h3>
+            <h3 class="text-sm font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Gérer matériel</h3>
             <ul class="space-y-2">
                 <li>
-                    <a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">
+                    <a href="{{route('materiel.create')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">
                         Ajouter matériel
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">
+                    <a href="{{route('materiel.searchToUpdate')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">
                         Modifier matériel
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="block bg-purple-500 text-white text-xxs hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">
+                    <a href="{{route('materiel.searchToDelete')}}" class="block bg-gray-700 text-white text-xxs hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">
                         Supprimer matériel
                     </a>
                 </li>
@@ -65,25 +69,26 @@
 
             </div>
             <div class="pb-4">
-            <h3 class="text-lg font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Rechercher matériel</h3>
+            <h3 class="text-sm font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Rechercher matériel</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">Rechercher par date</a></li>
-                <li><a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">Rechercher par désignation</a></li>
-                <li><a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">Rechercher par catégorie</a></li>
+                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par date</a></li>
+                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par désignation</a></li>
+                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par catégorie</a></li>
             </ul>
             </div>
             <div class="pb-4">
-            <h3 class="text-lg font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Affichage des statistiques</h3>
+            <h3 class="text-sm font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Affichage des statistiques</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">Afficher par catégorie</a></li>
-                <li><a href="#" class="block bg-purple-500 text-white hover:bg-purple-700 rounded-lg text-center w-full max-w-[300px] mx-auto">Afficher coûts par année</a></li>
+                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Afficher par catégorie</a></li>
+                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Afficher coûts par année</a></li>
             </ul>
             </div>
                 <!-- Duplicate sections omitted for brevity -->
         </div>
 
+
         <!-- Main Area: Actualités et produits -->
-        <div class="bg-white p-6 rounded-lg shadow-lg flex-1 overflow-y-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg flex-1 overflow-y-auto"  id="main-area">
             
         </div>
 </div>
@@ -94,5 +99,22 @@
             <p class="text-gray-600">&copy; 2024 Nom de l'École. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        document.getElementById('loadMateriels').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetchMateriels();
+        });
+
+        function fetchMateriels() {
+            fetch('{{ route('materiel.index') }}')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('main-area').innerHTML = html;
+                })
+                .catch(error => console.error('Error fetching content:', error));
+        }
+    </script>
 </body>
 </html>
