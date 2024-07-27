@@ -60,11 +60,7 @@
             </div>
         </div>
     </nav>
-    @if(session()->has('success'))
-        <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-lg">
-            {{ session('success') }}
-        </div>
-    @endif
+
     <!-- Main Content -->
     <div class="flex flex-grow overflow-hidden">
         <!-- Sidebar: Gestion de matériel -->
@@ -96,15 +92,15 @@
             <h3 class="text-sm font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Rechercher matériel</h3>
             <ul class="space-y-2">
                 <li><a href="{{route('materiel.VchercherDate')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par date</a></li>
-                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par désignation</a></li>
-                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par catégorie</a></li>
+                <li><a href="{{route('materiel.VchercherParDesignation')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par désignation</a></li>
+                <li><a href="{{route('materiel.VchercherParCategorie')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par catégorie</a></li>
             </ul>
             </div>
             <div class="pb-4">
             <h3 class="text-sm font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Affichage des statistiques</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Afficher par catégorie</a></li>
-                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Afficher coûts par année</a></li>
+                <li><a href="{{route('materiel.afficherParCategorie')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Afficher par catégorie</a></li>
+                <li><a href="{{route('materiel.CoutsParAnnee')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Afficher coûts par année</a></li>
             </ul>
             </div>
                 <!-- Duplicate sections omitted for brevity -->
@@ -113,6 +109,11 @@
 
         <!-- Main Area: Actualités et produits -->
         <div class="bg-white p-6 rounded-lg shadow-lg flex-1 overflow-y-auto"  id="main-area">
+        @if(session()->has('success'))
+        <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-lg">
+            {{ session('success') }}
+        </div>
+    @endif
             @yield('content')
         </div>
 </div>

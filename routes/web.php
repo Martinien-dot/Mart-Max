@@ -28,3 +28,13 @@ Route::post('/materiel/chercherPourMettreAJour', [MaterielController::class, 'se
 
 Route::get('/materiel/VchercherParDate', [MaterielController::class, 'showSearchForm2'])->name('materiel.VchercherDate');
 Route::get('/materiel/chercherParDate', [MaterielController::class, 'chercherParDate'])->name('materiel.chercherParDate');
+
+Route::get('/materiel/VchercherParDesignation', [MaterielController::class, 'showSearchForm3'])->name('materiel.VchercherParDesignation');
+Route::get('/materiel/chercherParDesignation', [MaterielController::class, 'chercherParDesignation'])->name('materiel.chercherParDesignation');
+
+
+Route::get('/materiel/VchercherParCategorie', [MaterielController::class, 'showSearchForm4'])->name('materiel.VchercherParCategorie');
+Route::get('/materiel/chercherParCategorie', [MaterielController::class, 'chercherParcategorie'])->name('materiel.chercherParCategorie');
+
+Route::get('/materiel/afficherParCategorie', [MaterielController::class, 'afficheParCat'])->name('materiel.afficherParCategorie');
+Route::get('/materiel/afficherCoutsParAnnee', [MaterielController::class, 'CoutsParAnnee'])->name('materiel.CoutsParAnnee');

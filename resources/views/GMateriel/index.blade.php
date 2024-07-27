@@ -20,7 +20,7 @@
             <th class="px-5 py-2 text-center border border-slate-300">Catégorie</th>
             <th class="px-5 py-2 text-center border border-slate-300">Désignation</th>
             <th class="px-5 py-2 text-center border border-slate-300">Fournisseur</th>
-            <th class="px-5 py-2 text-center border border-slate-300">Prix HT</th>
+            <th class="px-5 py-2 text-center border border-slate-300">Prix HT(DH)</th>
             <th class="px-5 py-2 text-center border border-slate-300">Date d'Acquisition</th>
             <th class="px-5 py-2 text-center border border-slate-300">Modifier</th>
             <th class="px-5 py-2 text-center border border-slate-300">Supprimer</th>

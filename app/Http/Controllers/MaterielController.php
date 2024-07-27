@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Materiel;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
@@ -26,7 +27,7 @@ class MaterielController extends Controller
             'designation' => 'required|string',
             'categorie' => 'required|string',
             'fournisseur' => 'required|string',
-            'prix_ht' => 'required|numeric',
+            'prix_ht' => 'required|numeric|max:9999999999.99',
             'date_acquisition' => 'required|date',
         ]);
 
@@ -51,7 +52,7 @@ class MaterielController extends Controller
             'designation' => 'required|string',
             'categorie' => 'required|string',
             'fournisseur' => 'required|string',
-            'prix_ht' => 'required|numeric',
+            'prix_ht' => 'required|numeric|max:9999999999.99',
             'date_acquisition' => 'required|date',
         ]);
         $materiel->update($data);
@@ -125,6 +126,55 @@ class MaterielController extends Controller
 
         // Retourner la vue avec les résultats
         return view('GMateriel.MaterielsParDate', compact('materiels', 'date'));
+    }
+
+    public function showSearchForm3()
+    {
+        return view('GMateriel.VchercherParDesignation');
+    }
+
+    public function chercherParDesignation(Request $request)
+    {
+        $designation = $request->input('designation');
+
+        $materiels = Materiel::where('designation', 'LIKE', '%' . $designation . '%')->get();
+
+        // Retourner la vue avec les résultats
+        return view('GMateriel.MaterielsParDesignation', compact('materiels', 'designation'));
+    }
+
+
+    public function showSearchForm4()
+    {
+        return view('GMateriel.VchercherParCategorie');
+    }
+
+    public function chercherParCategorie(Request $request)
+    {
+        $categorie = $request->input('categorie');
+
+        $materiels = Materiel::where('categorie', 'LIKE', '%' . $categorie . '%')->get();
+
+        // Retourner la vue avec les résultats
+        return view('GMateriel.MaterielsParCategorie', compact('materiels', 'categorie'));
+    }
+
+    public function afficheParCat(){
+        $materiels = Materiel::all()->groupBy('categorie');
+        return view('GMateriel.afficheParCategorie', compact('materiels'));
+    }
+
+    public function coutsParAnnee()
+    {
+        $coutsParAnnee = Materiel::select(
+            DB::raw('YEAR(date_acquisition) as annee'),
+            DB::raw('SUM(prix_ht) as cout_total')
+        )
+        ->groupBy('annee')
+        ->orderBy('annee')
+        ->get();
+
+        return view('GMateriel.couts_par_annee', compact('coutsParAnnee'));
     }
 
 }
