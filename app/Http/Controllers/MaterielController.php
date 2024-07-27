@@ -106,7 +106,7 @@ class MaterielController extends Controller
         if ($materiel) {
             return redirect()->route('materiel.edit', ['materiel' => $materiel->id]);
         } else {
-            return redirect()->route('materiel.search')->with('error', 'Matériel non trouvé.');
+            return redirect()->route('materiel.searchToUpdate')->with('error', 'Matériel non trouvé.');
         }
     }
 

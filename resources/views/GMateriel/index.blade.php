@@ -1,11 +1,11 @@
+
+@extends('welcome')
+
+@section('content')
+
+
 <div class="max-w-6xl mx-auto p-8">
     <h1 class="text-3xl font-bold text-center mb-6">Liste des Matériels</h1>
-
-    @if(session()->has('success'))
-        <div class="mb-4 p-4 bg-green-100 text-green-800 border border-green-300 rounded-lg">
-            {{ session('success') }}
-        </div>
-    @endif
 
     <div class="mb-4 text-right">
         <a href="{{ route('materiel.create') }}" class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -52,6 +52,8 @@
         @endforeach
     </table>
 </div>
+
+@endsection
 
 
 

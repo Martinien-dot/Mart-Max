@@ -1,16 +1,8 @@
 
 <!-- resources/views/GMateriel/searchToUpdate.blade.php -->
+@extends('welcome')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rechercher Matériel</title>
-    @vite('resources/css/app.css')
-</head>
-<body>
+@section('content')
     <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">
         @if(session('error'))
             <div class="mb-4 text-red-500">
@@ -18,7 +10,7 @@
             </div>
         @endif
 
-        <h1 class="text-center text-2xl font-bold mb-6">Rechercher Matériel</h1>
+        <h1 class="text-center text-2xl font-bold mb-6">Rechercher Matériel à Modifier</h1>
         <form method="POST" action="{{ route('materiel.searchToUpdate.submit') }}">
             @csrf
             <div class="mb-4">
@@ -30,5 +22,4 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+@endsection

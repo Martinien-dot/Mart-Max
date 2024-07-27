@@ -1,15 +1,6 @@
 <!-- resources/views/GMateriel/searchToDelete.blade.php -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rechercher Matériel</title>
-    @vite('resources/css/app.css')
-</head>
-<body>
+@extends('welcome')
+@section('content')
     <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">
         @if(session('error'))
             <div class="mb-4 text-red-500">
@@ -17,7 +8,7 @@
             </div>
         @endif
 
-        <h1 class="text-center text-2xl font-bold mb-6">Rechercher Matériel</h1>
+        <h1 class="text-center text-2xl font-bold mb-6">Rechercher Matériel à Supprimer</h1>
         <form method="POST" action="{{ route('materiel.searchToDelete.submit') }}">
             @csrf
             <div class="mb-4">
@@ -29,5 +20,4 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+@endsection
