@@ -14,7 +14,7 @@
     </div>
 
     <table class="w-full border-collapse border border-slate-400">
-        <tr>
+        <tr class='bg-gray-200'>
             <th class="px-5 py-2 text-center border border-slate-300">Numéro d'Ordre</th>
             <th class="px-5 py-2 text-center border border-slate-300">Département</th>
             <th class="px-5 py-2 text-center border border-slate-300">Catégorie</th>

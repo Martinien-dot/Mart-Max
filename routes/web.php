@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterielController;
+use App\Http\Controllers\SimpleExcelController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,3 +25,6 @@ Route::post('/materiel/chercherPourSupprimer', [MaterielController::class, 'sear
 
 Route::get('/materiel/chercherPourMettreAJour', [MaterielController::class, 'showSearchForm1'])->name('materiel.searchToUpdate');
 Route::post('/materiel/chercherPourMettreAJour', [MaterielController::class, 'searchToUpdate'])->name('materiel.searchToUpdate.submit');
+
+Route::get('/materiel/VchercherParDate', [MaterielController::class, 'showSearchForm2'])->name('materiel.VchercherDate');
+Route::get('/materiel/chercherParDate', [MaterielController::class, 'chercherParDate'])->name('materiel.chercherParDate');

@@ -110,4 +110,21 @@ class MaterielController extends Controller
         }
     }
 
+    public function showSearchForm2()
+    {
+        return view('GMateriel.VchercherParDate');
+    }
+
+    public function chercherParDate(Request $request)
+    {
+        // Récupérer la date de recherche
+        $date = $request->input('date_acquisition');
+
+        // Rechercher les matériels par date d'acquisition
+        $materiels = Materiel::where('date_acquisition', $date)->get();
+
+        // Retourner la vue avec les résultats
+        return view('GMateriel.MaterielsParDate', compact('materiels', 'date'));
+    }
+
 }

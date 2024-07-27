@@ -95,7 +95,7 @@
             <div class="pb-4">
             <h3 class="text-sm font-bold mb-4 text-white bg-blue-600 p-0.4 rounded">Rechercher matériel</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par date</a></li>
+                <li><a href="{{route('materiel.VchercherDate')}}" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par date</a></li>
                 <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par désignation</a></li>
                 <li><a href="#" class="block bg-gray-700 text-white hover:bg-purple-700 rounded-lg text-center text-xs w-full max-w-[150px] mx-auto">Rechercher par catégorie</a></li>
             </ul>
