@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Materiel;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ItemsExport;
+
 
 class MaterielController extends Controller
 {
@@ -175,6 +179,31 @@ class MaterielController extends Controller
         ->get();
 
         return view('GMateriel.couts_par_annee', compact('coutsParAnnee'));
+    }
+
+    public function exportToTxt()
+    {
+        // Récupérer les données de votre modèle
+        $items = Materiel::all();
+
+        // Créer une chaîne de caractères pour le fichier texte
+        $txtContent = "";
+        foreach ($items as $item) {
+            $txtContent .= implode("\t", $item->toArray()) . "\n"; // Utiliser une tabulation pour séparer les colonnes
+        }
+
+        // Définir le nom du fichier
+        $fileName = 'export.txt';
+
+        // Retourner le fichier texte en réponse
+        return Response::make($txtContent, 200, [
+            'Content-Type' => 'text/plain',
+            'Content-Disposition' => "attachment; filename=$fileName"
+        ]);
+    }
+    public function exportToExcel()
+    {
+        return Excel::download(new ItemsExport, 'export.xlsx');
     }
 
 }
