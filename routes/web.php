@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/materiel/afficherCoutsParAnnee', [MaterielController::class, 'CoutsParAnnee'])->name('materiel.CoutsParAnnee');
     Route::get('/materiel/export-txt', [MaterielController::class, 'exportToTxt'])->name('materiel.exportToTxt');
     Route::get('/materiel/export-excel', [MaterielController::class, 'exportToExcel'])->name('materiel.exportToExcel');
+    Route::post('/Materiel/import-excel', [MaterielController::class, 'importFromExcel'])->name('materiel.importFromExcel');
 });
 
 require __DIR__.'/auth.php';

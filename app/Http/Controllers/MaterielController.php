@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ItemsExport;
+use App\Imports\ItemsImport;
 
 
 class MaterielController extends Controller
@@ -193,7 +194,7 @@ class MaterielController extends Controller
         }
 
         // Définir le nom du fichier
-        $fileName = 'export.txt';
+        $fileName = 'materiels.txt';
 
         // Retourner le fichier texte en réponse
         return Response::make($txtContent, 200, [
@@ -203,7 +204,18 @@ class MaterielController extends Controller
     }
     public function exportToExcel()
     {
-        return Excel::download(new ItemsExport, 'export.xlsx');
+        return Excel::download(new ItemsExport, 'materiels.xlsx');
+    }
+
+    public function importFromExcel(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|file|mimes:xlsx,xls'
+        ]);
+
+        Excel::import(new ItemsImport, $request->file('excel_file'));
+
+        return redirect()->back()->with('success', 'Données importées avec succès !');
     }
 
 }
