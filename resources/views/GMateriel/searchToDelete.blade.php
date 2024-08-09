@@ -8,7 +8,7 @@
             </div>
         @endif
 
-        <h1 class="text-center text-2xl font-bold mb-6">Rechercher Matériel à Supprimer</h1>
+        <h1 class="text-center text-2xl text-gray-700 font-bold mb-6">Rechercher Matériel à Supprimer</h1>
         <form method="POST" action="{{ route('materiel.searchToDelete.submit') }}">
             @csrf
             <div class="mb-4">
