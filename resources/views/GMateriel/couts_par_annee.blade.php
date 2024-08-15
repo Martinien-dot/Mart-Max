@@ -5,22 +5,31 @@
 @section('content')
 <div class="max-w-6xl mx-auto p-8">
     <h1 class="text-3xl font-bold text-center mb-6">Coûts des Matériels par Année</h1>
+    <canvas id="costChart" width="400" height="200"></canvas>
+    <script>
+        const ctx = document.getElementById('costChart').getContext('2d');
+        const costChart = new Chart(ctx, {
+            type: 'bar', // ou 'line', selon vos préférences
+            data: {
+                labels: @json($years),
+                datasets: [{
+                    label: 'Coûts par Année',
+                    data: @json($totals),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 
-    @if($coutsParAnnee->isEmpty())
-        <p class="text-center text-gray-600">Aucun coût de matériel trouvé.</p>
-    @else
-        <table class="w-full border-collapse border border-slate-400">
-            <tr>
-                <th class="px-5 py-2 text-center border border-slate-300">Année</th>
-                <th class="px-5 py-2 text-center border border-slate-300">Coût Total (HT)</th>
-            </tr>
-            @foreach($coutsParAnnee as $cout)
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="px-4 py-2 border border-slate-300">{{ $cout->annee }}</td>
-                    <td class="px-4 py-2 border border-slate-300">{{ number_format($cout->cout_total, 2, ',', ' ') }} DH</td>
-                </tr>
-            @endforeach
-        </table>
-    @endif
+
 </div>
 @endsection

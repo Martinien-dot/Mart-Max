@@ -10,6 +10,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -62,24 +63,12 @@
     @include('layouts.navigation')
 
     <!-- Dark mode toggle button -->
-    <div class="p-4 flex justify-end">
-        <button id="theme-toggle" class="text-gray-800 dark:text-gray-200 focus:outline-none">
-            Mode
-            <!-- Sun Icon -->
-            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1M12 20v1M4.22 4.22l.707.707M17.07 17.07l.707.707M3 12h1M20 12h1M4.22 19.78l.707-.707M17.07 6.93l.707-.707M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/>
-            </svg>
-            <!-- Moon Icon -->
-            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.293 16.293a8 8 0 1 0-1.414 1.414A6 6 0 0 1 16 14a6 6 0 0 1 1.293 2.293z"/>
-            </svg>
-        </button>
-    </div>
+    
 
     <!-- Main Content -->
     <div class="flex flex-grow overflow-hidden">
         <!-- Sidebar: Gestion de matériel -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-1/6 max-h-screen overflow-y-auto">
+        <div class="bg-gray-0 dark:bg-gray-800 p-6 rounded-lg shadow-lg w-1/6 max-h-screen overflow-y-auto">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Gestion de matériel</h1>
             
             <a href="{{ route('materiel.index') }}" class="block text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-200 rounded-lg px-4 py-3 mb-3 transition duration-300">

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Response;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ItemsExport;
 use App\Imports\ItemsImport;
+use ConsoleTVs\Charts\Classes\Chartjs\Chart;
 
 
 class MaterielController extends Controller
@@ -171,7 +172,22 @@ class MaterielController extends Controller
 
     public function coutsParAnnee()
     {
-        $coutsParAnnee = Materiel::select(
+        $costs = Materiel::selectRaw('YEAR(date_acquisition) as year, SUM(prix_ht) as total_cost')
+                 ->groupBy('year')
+                 ->orderBy('year')
+                 ->get();
+
+        $years = [];
+        $totals = [];
+
+        foreach ($costs as $cost) {
+            $years[] = $cost->year;
+            $totals[] = $cost->total_cost;
+        }
+
+        return view('GMateriel.couts_par_annee', compact('years', 'totals'));
+        /*----------------*/
+        /*$coutsParAnnee = Materiel::select(
             DB::raw('YEAR(date_acquisition) as annee'),
             DB::raw('SUM(prix_ht) as cout_total')
         )
@@ -179,7 +195,7 @@ class MaterielController extends Controller
         ->orderBy('annee')
         ->get();
 
-        return view('GMateriel.couts_par_annee', compact('coutsParAnnee'));
+        return view('GMateriel.couts_par_annee', compact('coutsParAnnee'));*/
     }
 
     public function exportToTxt()
