@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('dashboard')
 
 @section('content')
     <div class="max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">

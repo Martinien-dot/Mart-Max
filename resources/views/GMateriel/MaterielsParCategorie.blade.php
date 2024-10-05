@@ -1,5 +1,5 @@
 
-@extends('welcome')
+@extends('dashboard')
 
 @section('content')
 

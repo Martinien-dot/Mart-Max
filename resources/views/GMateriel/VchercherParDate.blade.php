@@ -1,5 +1,5 @@
 
-@extends('welcome')
+@extends('dashboard')
 @section('content')
 
 <form action="{{ route('materiel.chercherParDate') }}" method="GET" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md space-y-4">

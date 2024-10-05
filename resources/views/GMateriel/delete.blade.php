@@ -1,6 +1,6 @@
 <!-- resources/views/materiel/delete.blade.php -->
 
-@extends('welcome')
+@extends('dashboard')
 
 @section('content')
 

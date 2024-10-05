@@ -39,7 +39,7 @@ class MaterielController extends Controller
 
         Materiel::create($data);
     
-        return redirect()->route('materiel.welcome')->with('success', 'Matériel ajouté avec succès.');
+        return redirect()->route('dashboard')->with('success', 'Matériel ajouté avec succès.');
     }
 
     public function edit(Materiel $materiel){
@@ -63,12 +63,12 @@ class MaterielController extends Controller
         ]);
         $materiel->update($data);
     
-        return redirect()->route('materiel.welcome')->with('success', 'Matériel modifié avec succès.');
+        return redirect()->route('dashboard')->with('success', 'Matériel modifié avec succès.');
     }
 
     public function destroy(Materiel $materiel){
         $materiel->delete();
-        return redirect(route('materiel.welcome'))->with('success', 'Matériel supprimé avec succès');
+        return redirect(route('dashboard'))->with('success', 'Matériel supprimé avec succès');
     }
 
 

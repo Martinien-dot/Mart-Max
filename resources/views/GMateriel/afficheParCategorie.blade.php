@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('dashboard')
 
 @section('content')
 <div class="max-w-6xl mx-auto p-8">

@@ -1,6 +1,6 @@
 
 <!-- resources/views/GMateriel/searchToUpdate.blade.php -->
-@extends('welcome')
+@extends('dashboard')
 
 @section('content')
     <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg mt-10">

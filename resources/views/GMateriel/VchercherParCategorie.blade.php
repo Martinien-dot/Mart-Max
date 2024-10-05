@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('dashboard')
 @section('content')
 
 <form action="{{ route('materiel.chercherParCategorie') }}" method="GET" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md space-y-4">
