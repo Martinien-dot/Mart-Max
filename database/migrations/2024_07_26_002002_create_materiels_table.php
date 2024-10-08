@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('designation'); // Désignation
             $table->string('categorie'); // Catégorie
             $table->string('fournisseur'); // Fournisseur
-            $table->decimal('prix_ht', 15, 2); // Prix HT
+            $table->decimal('prix_ht', 8, 2); // Prix HT
             $table->date('date_acquisition'); // Date d’acquisition
             $table->timestamps(); // Timestamps pour created_at et updated_at
         });
